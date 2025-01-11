@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import styled from "styled-components";
 
 const CalKey = styled.button`
@@ -14,10 +15,29 @@ font-size: 16px;
 
 
 
-function Key({num}) {
+function Key({num,setCurValue,curValue, isFunction, setOperation, setPrevValue,prevValue}) {
+    const calKeyHandle = () =>{
+        if(isFunction && num !== '='){
+            setPrevValue(curValue)
+            setCurValue('')
+            setOperation(num)
+        }
+        else if(isFunction && num == '='){
+            const firstNum = Number(prevValue)
+            const secondNum = Number(curValue)    
+            setCurValue(firstNum + secondNum)
+            setPrevValue('')
+        }
+        else{
+           // if(prevValue)
+            setCurValue(curValue + num.toString())
+        }
+        
+    }
+    
 
     return(
-        <CalKey>{num}</CalKey>
+        <CalKey onClick={calKeyHandle}>{num}</CalKey>
      
     )
 
