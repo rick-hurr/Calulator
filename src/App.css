@@ -37,11 +37,10 @@
   }
 }
 
-.flex-col{
+.flex-col {
   flex: 1;
 }
 .flex-grid {
   display: grid;
-  grid-template-columns: auto auto auto;
-  padding: 10px;
+  grid-template-columns: auto auto auto auto;
 }
