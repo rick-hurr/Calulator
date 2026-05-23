@@ -23,11 +23,14 @@ function Key({
   resultValue,
   setCurFunc,
   curFunc,
+  setcurEquation,
+  curEquation
 }) {
   const operations = (curNum, prevNum) => {
+    console.log(curNum, prevNum)
     switch (curFunc) {
       case "+":
-        return prevNum + curNum;
+        return Number(prevNum) + Number(curNum);
         break;
       case "-":
         return Number(prevNum) - Number(curNum);
@@ -47,6 +50,7 @@ function Key({
                 setPrevValue("");
                 setCurValue("");
                 setResultValue("");
+                setcurEquation("");
         }else{
                   setCurFunc(num);
                     setPrevValue(resultValue ? resultValue : curValue);
@@ -54,12 +58,14 @@ function Key({
         }
           
     } else if (isFunction && num === "=") {
-      const firstNum = Number(prevValue);
+      const firstNum = Number(prevValue) == 0 ?  resultValue : Number(prevValue) ;
       const secondNum = Number(curValue);
+      console.log(operations(secondNum, firstNum))
       setResultValue(operations(secondNum, firstNum));
-      setCurFunc("");
+      setcurEquation(`${firstNum} ${curFunc} ${secondNum}`)
+      //setCurFunc("");
       setPrevValue("");
-      setCurValue("");
+      //setCurValue("");
     } else {
       if (resultValue) setResultValue("");
       setCurValue(curValue + num.toString());
