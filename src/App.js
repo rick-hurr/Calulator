@@ -8,12 +8,26 @@ const keys = [9, 8, 7, 6, 5, 4, 3, 2, 1, 0];
 const CalLabel = styled.div`
   background-color: grey;
   width: 100%;
+  min-height: 40px;
 `;
 const PrevLabel = styled.div`
   background-color: dark grey;
   width: 100%;
+  min-height: 40px;
 `;
 
+const FlexGrid = styled.div`
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+`
+const BorderDiv = styled.div`
+  border-radius: 5px;
+  background-color: grey;
+  padding: 30px
+`
+const FlexCol = styled.div`
+  flex: 1;
+`
 
 function App() {
   const [curValue, setCurValue] = useState("");
@@ -26,17 +40,19 @@ function App() {
     <div className="App">
       <header className="App-header">
         <div>
-              <div className="text-center">
+         
+    <BorderDiv>
+           <div className="text-center">
       <h1 className="text-4xl font-bold text-blue-500">Calculator</h1>
     </div>
           <PrevLabel>{curEquation ? curEquation :`${prevValue} ${curFunc}`}</PrevLabel>
           <CalLabel>{resultValue ? resultValue : curValue }</CalLabel>
-
-          <div className="flex-grid">
+          
+          <FlexGrid>
             {keys.map((w) => {
               return (
                 <>
-                  <div className="flex-col">
+                  <FlexCol>
                     <Key
                       num={w}
                       setCurValue={setCurValue}
@@ -44,7 +60,7 @@ function App() {
                       setResultValue={setResultValue}
                       resultValue={resultValue}
                     />
-                  </div>
+                  </FlexCol>
                 </>
               );
             })}
@@ -118,7 +134,8 @@ function App() {
               setCurFunc={setCurFunc}
               setcurEquation={setcurEquation}
             />
-          </div>
+          </FlexGrid>
+          </BorderDiv>
         </div>
       </header>
     </div>

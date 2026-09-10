@@ -7,9 +7,17 @@ const CalKey = styled.button`
   color: black;
   padding: 15px 32px;
   text-align: center;
+  margin: 4px 2px;
   text-decoration: none;
   display: inline-block;
   font-size: 16px;
+  border-radius: 5px;
+   &:hover {
+   background-color: darkgrey;
+   cursor: pointer;
+   transition: background-color 0.5s ease;
+}
+   
 `;
 
 function Key({
@@ -24,7 +32,6 @@ function Key({
   setCurFunc,
   curFunc,
   setcurEquation,
-  curEquation
 }) {
   const operations = (curNum, prevNum) => {
     console.log(curNum, prevNum)
@@ -63,9 +70,7 @@ function Key({
       console.log(operations(secondNum, firstNum))
       setResultValue(operations(secondNum, firstNum));
       setcurEquation(`${firstNum} ${curFunc} ${secondNum}`)
-      //setCurFunc("");
       setPrevValue("");
-      //setCurValue("");
     } else {
       if (resultValue) setResultValue("");
       setCurValue(curValue + num.toString());
