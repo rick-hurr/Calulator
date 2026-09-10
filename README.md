@@ -7,3 +7,12 @@ To start enter
 ### `npm start`
 
 
+
+to do:
+
+fix = error
+press = multiple times
+
+add other functions
+
+add tests
