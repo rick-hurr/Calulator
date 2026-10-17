@@ -65,9 +65,16 @@ function Key({
         }
           
     } else if (isFunction && num === "=") {
+
+      if (curFunc === "") {
+        setResultValue(curValue);
+        return;
+      }
+
       const firstNum = Number(prevValue) == 0 ?  resultValue : Number(prevValue) ;
-      const secondNum = Number(curValue);
-      console.log(operations(secondNum, firstNum))
+      const secondNum = Number(curValue) ;
+
+
       setResultValue(operations(secondNum, firstNum));
       setcurEquation(`${firstNum} ${curFunc} ${secondNum}`)
       setPrevValue("");
